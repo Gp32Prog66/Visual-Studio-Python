@@ -1,6 +1,7 @@
 #Will need to grab the request library
 from bs4 import BeautifulSoup
 import requests
+import json
 
 #GET Request
 req = requests.get('http://quotes.toscrape.com')
@@ -22,3 +23,11 @@ continueProgram = input("Pause Break. Type anything to see the rest of the resul
 #Gathers HTML Code
 print(req)
 print(req.content)
+
+# Open File. With statement automatically closes it 
+with open("bioInfo.json", "r") as infoFile:
+    data = json.load(infoFile)
+
+# Use dump function to encode the JSON file
+    with open("bioInfoResults.json", "w") as infoFile:
+        json.dump(data, infoFile)
